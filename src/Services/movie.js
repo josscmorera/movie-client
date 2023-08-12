@@ -15,3 +15,16 @@ export const getMovies = async () => {
     }
 }
 
+export const getMovie = async (id) => {
+    const  response = await fetch(`${url}/movies/${id}`, {
+        method: 'GET',
+        headers: getHeaders()
+    })
+    const data = await response.json();
+    if (data.success) {
+      return data.data;
+    } else {
+      return [];
+    }
+}
+

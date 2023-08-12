@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Movies from './Pages/Movies';
+import Movie from './Pages/Movie';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Movies />
       },
+      {
+        path: 'movie/:id',
+        element: <Movie />
+      }
     ]
   }
 ]);

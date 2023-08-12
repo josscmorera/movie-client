@@ -5,9 +5,9 @@ const NavBar = ({ user }) => {
     return (
         <nav>
                 <br/>
-                    <Link to="/">Lista</Link>
+                    <Link to="/">List Movies</Link>
                 <br/>
-                   {user && <Link to="/blog-form">Mis Favoritos</Link>}
+                   {user && <Link to="/blog-form">My Favorites</Link>}
                 <br/>
                     {!user ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
                    
