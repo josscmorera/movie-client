@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user , setUser}) => {
+
+
+    const handleLogout = () => {
+        localStorage.removeItem('user');
+        setUser(null);
+    }
+
     return (
         <nav>
                 <br/>
@@ -9,7 +16,7 @@ const NavBar = ({ user }) => {
                 <br/>
                    {user && <Link to="/blog-form">My Favorites</Link>}
                 <br/>
-                    {!user ? <Link to="/login">Login</Link> : <Link to="/logout">Logout</Link>}
+                    {!user ? <Link to="/login">Login</Link> : <a onClick={handleLogout} >Logout</a>}
                    
         </nav>
 

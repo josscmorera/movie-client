@@ -4,26 +4,32 @@ import { useEffect, useState } from 'react';
 
 import NavBar from './Components/NavBar';
 import { getUser } from './Services/user';
+import { getMovies } from './Services/movie';
 
 
 function App() {
   const [user, setUser] = useState(null);
-  const token = localStorage.getItem('token');
+  const [movies, setMovies] = useState([])
 
+  const getUserData = async () => {
+    const user = await getUser();
+    setUser(user);
+  }
 
+  const callMovies = async () => {
+    const movies = await getMovies()
+    setMovies(movies)
+  }
+  
   useEffect(() => {
-    const getUserData = async () => {
-      const user = await getUser();
-      setUser(user);
-
-    }
     getUserData();
-  }, [token]);
+    callMovies()
+  }, []);
 
   return (
     <div className="App">
-      <NavBar user={user} />
-      <Outlet context={{ user }} />
+      <NavBar user={user} setUser={setUser} />
+      <Outlet context={{ user, getUserData, setUser, movies, callMovies }} />
 
     </div>
   );

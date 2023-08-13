@@ -15,7 +15,7 @@ export const minutesToHours = (totalMinutes)  => {
   var hours = Math.floor(totalMinutes / 60)
   var minutes = totalMinutes % 60
 
-  if (minutes == 0) {
+  if (minutes === 0) {
     return `${hours}h`
   } else if (hours > 0 && minutes > 0) {
     return `${hours}h ${minutes}min`

@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../Styles/Movies.css';
-import { getMovies } from '../Services/movie';
 import MovieItem from '../Components/MovieItem';
+import { useOutletContext } from 'react-router-dom';
 
 export default function Movies () {
 
-  const [movies, setMovies] = useState([])
-
-  useEffect(() => {
-    const callMovies = async () => {
-      const movies = await getMovies()
-      setMovies(movies)
-    }
-    callMovies()
-  }, [])
+  const {movies} = useOutletContext()
 
   return <div className='Movies-container' >
     {

@@ -31,3 +31,21 @@ export const login = async (email, password) => {
     }
 }
 
+
+export const register = async (data) => {
+    const  response = await fetch(`${url}/users/register`, {
+        method: 'POST',
+        headers: getHeaders(),
+        body: JSON.stringify(data)
+    })
+    const res = await response.json();
+    if (res.success) {
+      const token = res.token;
+      localStorage.setItem('token', token);
+      return res.data;
+    } else {
+      
+      throw res.errors;
+    }
+}
+
