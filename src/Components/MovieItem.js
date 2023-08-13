@@ -3,7 +3,7 @@ import '../Styles/MovieItem.css'
 import { IMAGE_TMDB_URL } from '../Utils/urls'
 import { Link } from 'react-router-dom'
 
-export default function MovieItem({ movie }) {
+ const MovieItem = ({ movie }) => {
   return( 
     <Link to={`/movie/${movie._id}`} >
     <div className='Movie-item-container'>
@@ -13,3 +13,5 @@ export default function MovieItem({ movie }) {
     </Link>
   )
 }
+
+export default MovieItem;
