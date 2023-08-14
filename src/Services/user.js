@@ -49,3 +49,44 @@ export const register = async (data) => {
     }
 }
 
+export const addFavorite = async (movieId) => {
+    const  response = await fetch(`${url}/users/favorite/add`, {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify({movieId})
+    })
+    const data = await response.json();
+    if (data.success) {
+      return data.data;
+    } else {
+      return null;
+    }
+}
+
+export const removeFavorite = async (movieId) => {
+    const  response = await fetch(`${url}/users/favorite/remove`, {
+        method: 'PUT',
+        headers: getHeaders(),
+        body: JSON.stringify({movieId})
+    })
+    const data = await response.json();
+    if (data.success) {
+      return data.data;
+    } else {
+      return null;
+    }
+}
+
+export const listFavorites = async () => {
+    const  response = await fetch(`${url}/users/favorite/list`, {
+        method: 'GET',
+        headers: getHeaders()
+    })
+    const data = await response.json();
+    if (data.success) {
+      return data.data;
+    } else {
+      return null;
+    }
+}
+

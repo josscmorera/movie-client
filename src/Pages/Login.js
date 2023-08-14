@@ -12,6 +12,10 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const user = await login(email, password);
+        if (!user) {
+            alert('Invalid credentials');
+            return;
+        }
         setUser(user);
         navigate('/');
     };

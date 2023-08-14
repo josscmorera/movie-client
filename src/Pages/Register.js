@@ -36,7 +36,7 @@ const Register = () => {
               navigate('/');
             }
         } catch (err) { 
-            setError(err.message || err.email || err.password || "Ocurrió un error");
+            setError(err.message || err.email || err.password || "Something went wrong");
         }
     }
 

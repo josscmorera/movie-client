@@ -9,6 +9,7 @@ import Movies from './Pages/Movies';
 import Movie from './Pages/Movie';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import Favorites from './Pages/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'movie/:id',
         element: <Movie />
+      },
+      {
+        path: 'favorites',
+        element: <Favorites />
       }
     ]
   }

@@ -14,7 +14,7 @@ const NavBar = ({ user , setUser}) => {
                 <br/>
                     <Link to="/">List Movies</Link>
                 <br/>
-                   {user && <Link to="/blog-form">My Favorites</Link>}
+                   {user && <Link to="/favorites">My Favorites</Link>}
                 <br/>
                     {!user ? <Link to="/login">Login</Link> : <a onClick={handleLogout} >Logout</a>}
                    

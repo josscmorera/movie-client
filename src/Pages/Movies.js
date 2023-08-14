@@ -3,7 +3,7 @@ import '../Styles/Movies.css';
 import MovieItem from '../Components/MovieItem';
 import { useOutletContext } from 'react-router-dom';
 
-export default function Movies () {
+const Movies = () => {
 
   const {movies} = useOutletContext()
 
@@ -15,3 +15,5 @@ export default function Movies () {
     }
   </div>
 }
+
+export default Movies;

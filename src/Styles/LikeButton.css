@@ -1,0 +1,13 @@
+.like-button {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.heart {
+  margin-right: 5px;
+  color: gray;
+}
+
+.liked .heart {
+  color: red;
+}
