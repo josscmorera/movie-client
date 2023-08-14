@@ -116,7 +116,11 @@ const Movie = () => {
 
     <img src={`${IMAGE_BACKDROP_TMDB_URL}${movie?.backdropImage}`} alt={movie?.title} width={'100%'} />
     <h1>{movie?.title}</h1>
-    <LikeButton likedUser={likedUser} changeLike={handleLikeDislike} loading={ldFavorite}  />
+    {
+      user && (
+        <LikeButton likedUser={likedUser} changeLike={handleLikeDislike} loading={ldFavorite}  />
+      )
+    }
     <p>{ldRating ? <Loader />  : movie?.rating || 0} ⭐</p>
     <ul>
       {movie?.genres.map((genre, index) => {
