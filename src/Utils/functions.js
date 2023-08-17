@@ -6,8 +6,14 @@ export const getHeaders = () => {
   }
 }
 
-export const formatDate = (date) => {
+export const formatDate = (date, type) => {
+  if (!date) return ''
   const newDate = new Date(date)
+
+  if (type === 'input') {
+    return `${newDate.getFullYear()}-${((newDate.getMonth() + 1) < 10 ? '0' : '') +( newDate.getMonth() + 1)  }-${(newDate.getDate() < 10 ? '0' : '') + newDate.getDate()}`
+  }
+
   return newDate.toLocaleDateString()
 }
 

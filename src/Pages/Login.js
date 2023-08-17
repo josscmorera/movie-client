@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { login } from "../Services/user";
+import { loginAdmin } from "../Services/admin";
 
-const Login = () => {
+const Login = ({isAdmin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,13 +12,18 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const user = await login(email, password);
+        let user
+        if (isAdmin) {
+            user = await loginAdmin(email, password, true);
+        } else {
+            user = await login(email, password);
+        }
         if (!user) {
             alert('Invalid credentials');
             return;
         }
         setUser(user);
-        navigate('/');
+        navigate(isAdmin ? '/admin' : '/');
     };
     return (
       <div>

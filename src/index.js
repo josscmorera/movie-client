@@ -4,12 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Movies from './Pages/Movies';
 import Movie from './Pages/Movie';
 import Login from './Pages/Login';
+import Movies from './Pages/Movies';
+import AdminApp from './AdminApp';
 import Register from './Pages/Register';
 import Favorites from './Pages/Favorites';
+import MovieForm from './Pages/MovieForm';
+import AdminMovies from './Pages/AdminMovies';
+import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +38,25 @@ const router = createBrowserRouter([
       {
         path: 'favorites',
         element: <Favorites />
-      }
+      },
+    ]
+  },
+  {
+    path: '/admin/',
+    element: <AdminApp />,
+    children: [
+      {
+        index: true,
+        element: <AdminMovies />
+      },
+      {
+        path: 'login',
+        element: <Login isAdmin={true} />
+      },
+      {
+        path: 'movie/:id',
+        element: <MovieForm />
+      },
     ]
   }
 ]);
