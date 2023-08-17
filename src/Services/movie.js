@@ -28,6 +28,19 @@ export const getMovie = async (id) => {
     }
 }
 
+export const updateLastMovies = async () => {
+    const  response = await fetch(`${url}/movies`, {
+        method: 'POST',
+        headers: getHeaders()
+    })
+    const data = await response.json();
+    if (data.success) {
+      return data.data;
+    } else {
+      return [];
+    }
+}
+
 export const createMovie = async (movie) => {
     const  response = await fetch(`${url}/movies`, {
         method: 'POST',
