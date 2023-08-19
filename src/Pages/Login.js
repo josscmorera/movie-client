@@ -2,13 +2,15 @@ import { useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { login } from "../Services/user";
 import { loginAdmin } from "../Services/admin";
+import "../Styles/LoginForm.css";
 
-const Login = ({isAdmin}) => {
+
+const Login = ({ isAdmin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-   const { setUser } = useOutletContext();
+    const { setUser } = useOutletContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,32 +25,36 @@ const Login = ({isAdmin}) => {
             return;
         }
         setUser(user);
-        navigate(isAdmin ? '/admin' : '/');
+        navigate((isAdmin || user.isAdmin) ? '/admin' : '/');
     };
     return (
-      <div>
+        <div className="login-form">
 
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input
-                id="email"
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="password">Password:</label>
-            <input
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
-        </form>
 
-        <span>Don't have an account?</span>
-        <Link to="/register">Register</Link>
-      </div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="email">Email:</label>
+                <input
+                    id="email"
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <br />
+                <br />
+                <label htmlFor="password">Password:</label>
+                <input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <br />
+                <button type="submit">Login</button>
+            </form>
+
+            <span>Don't have an account?</span>
+            <Link style={{ color: 'yellow' }} to="/register">Register</Link>
+        </div>
     );
 }
 

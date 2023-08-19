@@ -1,0 +1,28 @@
+.input {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.movie-form {
+    max-width: 600px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-form button {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 480px) {
+    .movie-form {
+        padding: 10px;
+    }
+}

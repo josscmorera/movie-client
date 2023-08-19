@@ -1,13 +1,24 @@
 .like-button {
+  background-color: #181818;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  padding: 10px 20px;
   cursor: pointer;
-  font-size: 16px;
+  transition: all 0.3s;
+  font-weight: bold;
+}
+
+.like-button:hover {
+  background-color: #e50914;
+  border-color: #e50914;
+}
+
+.like-button.liked {
+  background-color: #e50914;
+  border-color: #e50914;
 }
 
 .heart {
+  font-size: 18px;
   margin-right: 5px;
-  color: gray;
-}
-
-.liked .heart {
-  color: red;
 }

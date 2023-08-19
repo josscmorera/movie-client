@@ -1,5 +1,3 @@
-
-
 const Input = ({ type, placeholder, value, onChange, label, name }) => {
     return (
         <div className="input">

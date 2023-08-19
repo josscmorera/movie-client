@@ -1,3 +1,4 @@
+import '../Styles/MovieDetails.css';
 import React, { useEffect, useState } from 'react'
 import { useOutletContext, useParams } from 'react-router-dom'
 import { addComment, addRating, getMovie, removeComment, updateComment, updateRating } from '../Services/movie'
@@ -10,6 +11,7 @@ import LikeButton from '../Components/LikeButton'
 import { addFavorite, removeFavorite } from '../Services/user'
 import Loader from '../Components/Loader'
 import LoaderPage from '../Components/LoaderPage'
+import { IMAGE_TMDB_URL } from '../Utils/urls'
 
 const Movie = () => {
   const [movie, setMovie] = useState(null)
@@ -23,7 +25,7 @@ const Movie = () => {
   const [ldFavorite, setLdFavorite] = useState(false)
   const [ldCommentDelete, setLdCommentDelete] = useState(false)
 
-  const {id} = useParams()
+  const { id } = useParams()
 
   const callMovie = async () => {
     const movie = await getMovie(id)
@@ -41,9 +43,9 @@ const Movie = () => {
     setLdRating(true)
     let newMovie
     if (!userRating) {
-       newMovie = await addRating(movie._id, rating)
+      newMovie = await addRating(movie._id, rating)
     } else {
-       newMovie = await updateRating(movie._id, rating)
+      newMovie = await updateRating(movie._id, rating)
     }
     if (!newMovie) {
       alert('Error to rate')
@@ -64,7 +66,7 @@ const Movie = () => {
     if (commentEdit) {
       newMovie = await updateComment(movie._id, commentEdit._id, comment)
     } else {
-      newMovie = await addComment(movie._id,  comment)
+      newMovie = await addComment(movie._id, comment)
     }
     if (!newMovie) {
       alert('Error to comment')
@@ -112,60 +114,69 @@ const Movie = () => {
 
 
   return (
-    <div>
-
-    <img src={`${IMAGE_BACKDROP_TMDB_URL}${movie?.backdropImage}`} alt={movie?.title} width={'100%'} />
-    <h1>{movie?.title}</h1>
-    {
-      user && (
-        <LikeButton likedUser={likedUser} changeLike={handleLikeDislike} loading={ldFavorite}  />
-      )
-    }
-    <p>{ldRating ? <Loader />  : movie?.rating || 0} ⭐</p>
-    <ul>
-      {movie?.genres.map((genre, index) => {
-        return <li key={index}>{genre.name}</li>
-      })}
-    </ul>
-    <p>{formatDate(movie?.releaseDate)}</p>
-    <p>{minutesToHours(movie?.runTime)} minutes</p>
-    <p>{movie?.overview}</p>
-    <YoutubeEmbed embedId={movie?.trailer} />
-
-    {
-      user &&  (
+    <div className="movie-details">
       <div>
-        <h3>Add Rating</h3>
-          <StarRating userRating={userRating} saveRating={handleRating}  />
+        <img src={`${IMAGE_TMDB_URL}/${movie.posterImage}`} alt={movie.title} className='Movie-item-img' />
+        <br />
+        <br />
+        <img src={`${IMAGE_BACKDROP_TMDB_URL}${movie?.backdropImage}`} alt={movie?.title} width={'100%'} />
       </div>
-      )
+      <div className="info">
+        <h1>{movie?.title}</h1>
 
-    }
+        {
+          user && (
+            <LikeButton likedUser={likedUser} changeLike={handleLikeDislike} loading={ldFavorite} />
+          )
+        }
 
-    <h2>Comments</h2>
-    {
-      user &&  (
-      <div>
-      <h3>{commentEdit ? 'Edit' : 'Add'} comment</h3>
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-        />
-        <button onClick={handleComment} disabled={ldComment}  > {ldComment ? <Loader />  : 'Save'} </button>
-    </div>
-      )
-      
-    }
-    <div>
-      {
-        movie?.comments.length === 0 && <p>there are no comments</p>
-      }
-      {
-        movie?.comments.map((comment, index) => <CommentItem key={index} comment={comment} user={user} setEdit={handleSetEdit} onDelete={handleDelete} ldDelete={ldCommentDelete}   />)
-      }
+        <p>{ldRating ? <Loader /> : movie?.rating || 0} ⭐</p>
 
-    </div>
-    
+        <ul>
+          {movie?.genres.map((genre, index) => {
+            return <li key={index}>{genre.name}</li>
+          })}
+        </ul>
+        <p>{formatDate(movie?.releaseDate)}</p>
+        <p>{minutesToHours(movie?.runTime)} minutes</p>
+        <p>{movie?.overview}</p>
+        <div className="trailer">
+          <YoutubeEmbed embedId={movie?.trailer} />
+        </div>
+        {
+          user && (
+            <div className="rating-comments">
+              <h3>Add Rating</h3>
+              <StarRating userRating={userRating} saveRating={handleRating} />
+            </div>
+          )
+
+        }
+        <div className="comment-section">
+          <h2>Comments</h2>
+          {
+            user && (
+              <div>
+                <h3>{commentEdit ? 'Edit' : 'Add'} comment</h3>
+                <textarea style={{ width: '737px', height: '77px' }}
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <button onClick={handleComment} disabled={ldComment}  > {ldComment ? <Loader /> : 'Save'} </button>
+              </div>
+            )
+
+          }
+          <div>
+            {
+              movie?.comments.length === 0 && <p>there are no comments</p>
+            }
+            {
+              movie?.comments.map((comment, index) => <CommentItem key={index} comment={comment} user={user} setEdit={handleSetEdit} onDelete={handleDelete} ldDelete={ldCommentDelete} />)
+            }
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

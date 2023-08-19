@@ -5,15 +5,15 @@ import MovieItemList from '../Components/MovieItemList';
 
 const AdminMovies = () => {
 
-  const {movies} = useOutletContext()
+  const { movies } = useOutletContext()
 
   return <div className='Movies-container' >
     <ul>
-    {
-      movies.map((movie, index) => {
-        return <MovieItemList key={index} movie={movie} />
-      })
-    }
+      {
+        movies.map((movie, index) => {
+          return <MovieItemList key={index} movie={movie} />
+        })
+      }
     </ul>
   </div>
 }

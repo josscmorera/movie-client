@@ -5,7 +5,7 @@ import { useOutletContext } from 'react-router-dom';
 
 const Movies = () => {
 
-  const {movies} = useOutletContext()
+  const { movies } = useOutletContext()
 
   return <div className='Movies-container' >
     {

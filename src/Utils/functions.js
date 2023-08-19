@@ -1,7 +1,7 @@
 export const getHeaders = () => {
   const token = localStorage.getItem('token');
   return {
-    'Content-Type': 'application/json', 
+    'Content-Type': 'application/json',
     'Authorization': `Bearer ${token}`
   }
 }
@@ -11,13 +11,13 @@ export const formatDate = (date, type) => {
   const newDate = new Date(date)
 
   if (type === 'input') {
-    return `${newDate.getFullYear()}-${((newDate.getMonth() + 1) < 10 ? '0' : '') +( newDate.getMonth() + 1)  }-${(newDate.getDate() < 10 ? '0' : '') + newDate.getDate()}`
+    return `${newDate.getFullYear()}-${((newDate.getMonth() + 1) < 10 ? '0' : '') + (newDate.getMonth() + 1)}-${(newDate.getDate() < 10 ? '0' : '') + newDate.getDate()}`
   }
 
   return newDate.toLocaleDateString()
 }
 
-export const minutesToHours = (totalMinutes)  => {
+export const minutesToHours = (totalMinutes) => {
   var hours = Math.floor(totalMinutes / 60)
   var minutes = totalMinutes % 60
 

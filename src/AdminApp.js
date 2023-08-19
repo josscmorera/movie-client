@@ -1,5 +1,5 @@
 import './App.css';
-import {  Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
 import NavBar from './Components/NavBar';
@@ -33,8 +33,8 @@ function AdminApp() {
     setLdMovies(true);
     await updateLastMovies();
     callMovies();
-}
-  
+  }
+
   useEffect(() => {
     getUserData();
     callMovies()
@@ -55,12 +55,12 @@ function AdminApp() {
 
   return (
     <div className="App">
-      
+
       {
         ldUser || ldMovies ? <LoaderPage /> : <>
-        <NavBar user={user} setUser={setUser} callMovies={callMovies} onFetch={handleFetch} />
-        <Outlet context={{ user, getUserData, setUser, movies, callMovies, setMovies }} />
-        
+          <NavBar user={user} setUser={setUser} callMovies={callMovies} onFetch={handleFetch} />
+          <Outlet context={{ user, getUserData, setUser, movies, callMovies, setMovies }} />
+
         </>
       }
     </div>

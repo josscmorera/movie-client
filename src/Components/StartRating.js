@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import '../Styles/StarRating.css'
 
 const StarRating = ({ userRating, saveRating }) => {
-  const [rating, setRating] = useState(0); 
+  const [rating, setRating] = useState(0);
 
   const handleStarClick = (selectedRating) => {
-    setRating(selectedRating); 
+    setRating(selectedRating);
     saveRating(selectedRating);
   };
 

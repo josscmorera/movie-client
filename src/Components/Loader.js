@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Styles/Loader.css'
 
-const Loader = ({ size=20 }) => {
+const Loader = ({ size = 20 }) => {
   const loaderStyle = {
     width: size,
     height: size,
@@ -14,7 +14,5 @@ const Loader = ({ size=20 }) => {
     </div>
   );
 };
-
-
 
 export default Loader;

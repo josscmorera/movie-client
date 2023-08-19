@@ -1,4 +1,4 @@
-import './App.css';
+import "./Styles/main.css";
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from 'react';
 
@@ -26,7 +26,7 @@ function App() {
     setMovies(movies)
     setLdMovies(false)
   }
-  
+
   useEffect(() => {
     getUserData();
     callMovies()
@@ -36,8 +36,8 @@ function App() {
     <div className="App">
       {
         ldUser || ldMovies ? <LoaderPage /> : <>
-        <NavBar user={user} setUser={setUser} />
-        <Outlet context={{ user, getUserData, setUser, movies, callMovies }} />
+          <NavBar user={user} setUser={setUser} />
+          <Outlet context={{ user, getUserData, setUser, movies, callMovies }} />
         </>
       }
     </div>

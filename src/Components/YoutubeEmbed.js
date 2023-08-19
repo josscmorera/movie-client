@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/YoutubeEmbed.css";
 
- const YoutubeEmbed = ({ embedId }) => (
+const YoutubeEmbed = ({ embedId }) => (
   <div className="video-responsive">
     <iframe
       width="853"

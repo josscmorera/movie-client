@@ -1,0 +1,57 @@
+.movie-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    list-style-type: none;
+
+}
+
+.movie-details img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.movie-details .info {
+    display: grid;
+    grid-gap: 20px;
+}
+
+ul {
+    list-style-type: none;
+    font-weight: 600;
+}
+
+.movie-details .trailer {
+    margin-top: 20px;
+}
+
+.rating-comments {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.comment-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .rating-comments {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .movie-details {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .movie-details .trailer {
+        margin-top: 40px;
+    }
+}

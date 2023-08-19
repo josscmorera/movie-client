@@ -1,11 +1,21 @@
 .Movies-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
   margin: 0 auto;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 1rem;
+  padding: 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .Movies-container {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Movies-container {
+    padding: 5px;
+  }
 }

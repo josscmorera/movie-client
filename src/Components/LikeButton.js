@@ -3,7 +3,7 @@ import '../Styles/LikeButton.css';
 import Loader from './Loader';
 
 const LikeButton = ({ likedUser, changeLike, loading }) => {
-  const [liked, setLiked] = useState(false); 
+  const [liked, setLiked] = useState(false);
 
   const handleLikeClick = () => {
     setLiked(!liked);
@@ -14,11 +14,11 @@ const LikeButton = ({ likedUser, changeLike, loading }) => {
     if (likedUser) {
       setLiked(true);
     }
-  }, [likedUser]); 
+  }, [likedUser]);
 
   return (
     <button className={`like-button ${liked ? 'liked' : ''}`} onClick={handleLikeClick} disabled={loading} >
-      {loading ?  <Loader /> : <div><span className="heart">{  liked ? '❤️' : '♡'}</span> { liked ? 'Dislike' : 'Like' }</div> }
+      {loading ? <Loader /> : <div><span className="heart">{liked ? '❤️' : '♡'}</span> {liked ? 'Remove' : 'Favorite'}</div>}
     </button>
   );
 };

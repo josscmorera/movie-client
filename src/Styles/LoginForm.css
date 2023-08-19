@@ -1,0 +1,30 @@
+.login-form {
+    max-width: 400px;
+    margin: 20px auto;
+    display: grid;
+    grid-gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(20, 20, 20, 0.8);
+}
+
+.login-form button {
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto;
+}
+
+.login-form a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    color: #b3b3b3;
+}
+
+@media screen and (max-width: 480px) {
+    .login-form {
+        padding: 10px;
+    }
+}

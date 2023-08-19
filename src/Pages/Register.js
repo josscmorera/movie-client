@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate, useOutletContext } from "react-router-dom";
 import { register } from "../Services/user";
+import "../Styles/RegisterForm.css";
+
 
 
 const Register = () => {
@@ -18,72 +20,53 @@ const Register = () => {
         e.preventDefault();
 
         if (password !== passwordVerify) {
-          alert("Passwords don't match");
-          return;
+            alert("Passwords don't match");
+            return;
         }
 
         const registerData = {
             email,
             firstName,
             lastName,
-            password,   
+            password,
         }
 
         try {
             const user = await register(registerData)
             if (user) {
-              setUser(user);
-              navigate('/');
+                setUser(user);
+                navigate('/');
             }
-        } catch (err) { 
+        } catch (err) {
             setError(err.message || err.email || err.password || "Something went wrong");
         }
     }
 
     return (
-        <div className="register">
+        <div className="register-form">
             <h1>Register a new account</h1>
             <form onSubmit={handleSubmit}>
 
                 <label htmlFor="firstName">First Name:</label>
-                <input
-                    type="text"
-                    placeholder="First Name"
-                    onChange={(e) => setFirstName(e.target.value)}
-                    value={firstName}
-                />
-
+                <input type="text" placeholder="First Name" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
+                <br />
+                <br />
                 <label htmlFor="last-name">Last Name:</label>
-                <input
-                    type="text"
-                    placeholder="Last Name"
-                    onChange={(e) => setLastName(e.target.value)}
-                    value={lastName}
-                />
-
+                <input type="text" placeholder="Last Name" onChange={(e) => setLastName(e.target.value)} value={lastName} />
+                <br />
+                <br />
                 <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                />
+                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} value={email} />
+                <br />
+                <br />
                 <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                    value={password}
-                />
+                <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                <br />
+                <br />
                 <label htmlFor="verify">Verify your password:</label>
-                <input
-                    type="password"
-                    placeholder="Verify your password"
-
-                    onChange={(e) => setPasswordVerify(e.target.value)}
-                    value={passwordVerify}
-                />
+                <input type="password" placeholder="Verify your password" onChange={(e) => setPasswordVerify(e.target.value)} value={passwordVerify} />
                 {error && <span className="error-message">{error}</span>}
+                <br />
                 <button type="submit">Register</button>
             </form>
             <span>Already have an account?</span>
